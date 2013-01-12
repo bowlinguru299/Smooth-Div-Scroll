@@ -1,7 +1,7 @@
 ﻿/* You can alter this CSS in order to give Smooth Div Scroll your own look'n'feel */
 
 /* Invisible left hotspot */
-div.scrollingHotSpotLeft
+div.scrollingHotSpotNegative
 {
 	/* The hotspots have a minimum width of 100 pixels and if there is room the will grow
     and occupy 15% of the scrollable area (30% combined). Adjust it to your own taste. */
@@ -21,7 +21,7 @@ div.scrollingHotSpotLeft
 }
 
 /* Visible left hotspot */
-div.scrollingHotSpotLeftVisible
+div.scrollingHotSpotNegativeVisible
 {
 	background-image: url(../images/arrow_left.gif);				
 	background-color: #fff;
@@ -33,7 +33,7 @@ div.scrollingHotSpotLeftVisible
 }
 
 /* Invisible right hotspot */
-div.scrollingHotSpotRight
+div.scrollingHotSpotPositive
 {
 	min-width: 75px;
 	width: 10%;
@@ -48,7 +48,7 @@ div.scrollingHotSpotRight
 }
 
 /* Visible right hotspot */
-div.scrollingHotSpotRightVisible
+div.scrollingHotSpotPositiveVisible
 {
 	background-image: url(../images/arrow_right.gif);
 	background-color: #fff;
@@ -75,4 +75,75 @@ div.scrollableArea
 	position: relative;
 	width: auto;
 	height: 100%;
+}
+
+.vertical 
+{
+	width: 500px;
+}
+
+/* Invisible left hotspot */
+.vertical div.scrollingHotSpotNegative
+{
+	/* The hotspots have a minimum width of 100 pixels and if there is room the will grow
+    and occupy 15% of the scrollable area (30% combined). Adjust it to your own taste. */
+	min-height: 75px;
+	height: 10%;
+	width: 100%;
+	/* There is a big background image and it's used to solve some problems I experienced
+    in Internet Explorer 6. */
+	background-image: url(../images/big_transparent.gif);
+	background-repeat: repeat;
+	background-position: center center;
+	position: absolute;
+	z-index: 200;
+	top: 0;
+	/*  The first url is for Firefox and other browsers, the second is for Internet Explorer */
+	cursor: url(../images/cursors/cursor_arrow_up.png), url(../images/cursors/cursor_arrow_up.cur),w-resize;
+}
+
+/* Visible left hotspot */
+.vertical div.scrollingHotSpotNegativeVisible
+{
+	background-image: url(../images/arrow_up.gif);				
+	background-color: #fff;
+	background-repeat: no-repeat;
+	opacity: 0.35; /* Standard CSS3 opacity setting */
+	-moz-opacity: 0.35; /* Opacity for really old versions of Mozilla Firefox (0.9 or older) */
+	filter: alpha(opacity = 35); /* Opacity for Internet Explorer. */
+	zoom: 1; /* Trigger "hasLayout" in Internet Explorer 6 or older versions */
+}
+
+/* Invisible right hotspot */
+.vertical div.scrollingHotSpotPositive
+{
+	min-height: 75px;
+	height: 10%;
+	width: 100%;
+	background-image: url(../images/big_transparent.gif);
+	background-repeat: repeat;
+	background-position: center center;
+	position: absolute;
+	z-index: 200;
+	bottom: 0;
+	cursor: url(../images/cursors/cursor_arrow_down.png), url(../images/cursors/cursor_arrow_down.cur),e-resize;
+}
+
+/* Visible right hotspot */
+.vertical div.scrollingHotSpotPositiveVisible
+{
+	background-image: url(../images/arrow_down.gif);
+	background-color: #fff;
+	background-repeat: no-repeat;
+	opacity: 0.35;
+	filter: alpha(opacity = 35);
+	-moz-opacity: 0.35;
+	zoom: 1;
+}
+
+.vertical div.scrollableArea
+{
+	position: relative;
+	width: 100%;
+	height: auto;
 }
