@@ -79,6 +79,8 @@ div.scrollableArea
 
 .vertical 
 {
+	position: relative;
+	height: 300px;
 	width: 500px;
 }
 

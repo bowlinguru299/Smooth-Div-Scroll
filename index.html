@@ -44,16 +44,25 @@
 </head>
 
 <body>
-
-	<div id="makeMeScrollable" class="vertical">
+	<div id="makeMeScrollable" >
 		<img src="images/demo/field.jpg" alt="Demo image" id="field" />
 		<img src="images/demo/gnome.jpg" alt="Demo image" id="gnome" />
 		<img src="images/demo/pencils.jpg" alt="Demo image" id="pencils" />
-		<img src="images/demo/golf.jpg" alt="Demo image" id="golf" />
+		<!--<img src="images/demo/golf.jpg" alt="Demo image" id="golf" />
 		<img src="images/demo/river.jpg" alt="Demo image" id="river" />
 		<img src="images/demo/train.jpg" alt="Demo image" id="train" />
 		<img src="images/demo/leaf.jpg" alt="Demo image" id="leaf" />
-		<img src="images/demo/dog.jpg" alt="Demo image" id="dog" />
+		<img src="images/demo/dog.jpg" alt="Demo image" id="dog" />-->
+	</div>
+	<div id="makeMeScrollableVertical" class="vertical">
+		<img src="images/demo/field.jpg" alt="Demo image" id="field" />
+		<img src="images/demo/gnome.jpg" alt="Demo image" id="gnome" />
+		<img src="images/demo/pencils.jpg" alt="Demo image" id="pencils" />
+		<!--<img src="images/demo/golf.jpg" alt="Demo image" id="golf" />
+		<img src="images/demo/river.jpg" alt="Demo image" id="river" />
+		<img src="images/demo/train.jpg" alt="Demo image" id="train" />
+		<img src="images/demo/leaf.jpg" alt="Demo image" id="leaf" />
+		<img src="images/demo/dog.jpg" alt="Demo image" id="dog" />-->
 	</div>
 
 	<!-- LOAD JAVASCRIPT LATE - JUST BEFORE THE BODY TAG 
@@ -90,6 +99,15 @@
 				autoScrollingMode: "onStart",
 				manualContinuousScrolling: true,
 				mousewheelScrolling: "allDirections",
+				autoScrollingDirection: "endlessLoopLeft",
+				touchScrolling: true
+			});
+			$("div#makeMeScrollableVertical").smoothDivScroll({
+				autoScrollingMode: "onStart",
+				manualContinuousScrolling: true,
+				mousewheelScrolling: "allDirections",
+				autoScrollingDirection: "endlessLoopUp",
+				scrollOrientation: "vertical",
 				touchScrolling: true
 			});
 		});
