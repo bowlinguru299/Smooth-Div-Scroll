@@ -1108,7 +1108,7 @@
 		/**********************************************************
 		Get current scrolling left offset
 		**********************************************************/
-		currentScroll: function () {
+		getScrollerOffset: function () {
 			var el = this.element, self = this, o = this.options;
 
 			// Returns the current left offset
