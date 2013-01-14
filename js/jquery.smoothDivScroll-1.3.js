@@ -593,7 +593,7 @@
 				// Autoscrolling not set to always and hotspot scrolling enabled.
 				// Regular hot spot scrolling.
 				else if (o.autoScrollingMode !== "always" && o.hotSpotScrolling) {
-					var getScrollerOffset = self.getScrollerOffset(),
+					var currentScroll = self.getScrollerOffset(),
 						scrollAreaSize,
 						scrollerSize;
 					if (o.scrollOrientation === vertical){
@@ -611,7 +611,7 @@
 					}
 					// When you can't scroll further left the left scroll hotspot should be hidden
 					// and the right hotspot visible.
-					else if (getScrollerOffset === 0) {
+					else if (currentScroll === 0) {
 						el.data(scrollingHotSpotNegative).hide();
 						el.data(scrollingHotSpotPositive).show();
 						// Callback
@@ -623,7 +623,7 @@
 					// When you can't scroll further right
 					// the right scroll hotspot should be hidden
 					// and the left hotspot visible
-					else if (scrollAreaSize <= scrollerSize + getScrollerOffset) {
+					else if (scrollAreaSize <= scrollerSize + currentScroll) {
 						el.data(scrollingHotSpotNegative).show();
 						el.data(scrollingHotSpotPositive).hide();
 						// Callback
@@ -792,7 +792,7 @@
 		},
 		move: function (pixels, animate, doContinous) {
 			var self = this, el = this.element, o = this.options,
-				getScrollerOffset = self.getScrollerOffset(),
+				currentScroll = self.getScrollerOffset(),
 				scrollAreaSize,
 				scrollerSize;
 			// clear queue, move to end
@@ -807,7 +807,7 @@
 			}
 			
 			// Only run this code if it's possible to scroll left or right,
-			if ((pixels < 0 && getScrollerOffset > 0) || (pixels > 0 && scrollAreaSize > (scrollerSize + getScrollerOffset))) {
+			if ((pixels < 0 && currentScroll > 0) || (pixels > 0 && scrollAreaSize > (scrollerSize + currentScroll))) {
 				var scrollEnd, 
 					functionName;
 				if (o.scrollOrientation === vertical){
@@ -1108,7 +1108,7 @@
 		/**********************************************************
 		Get current scrolling left offset
 		**********************************************************/
-		getScrollerOffset: function () {
+		currentScroll: function () {
 			var el = this.element, self = this, o = this.options;
 
 			// Returns the current left offset
@@ -1206,7 +1206,7 @@
 									self.move(-1 * o.autoScrollingStep);
 								}
 
-								// If the getScrollerOffset hasn't changed it means that the scrolling has reached
+								// If the currentScroll hasn't changed it means that the scrolling has reached
 								// the end and the direction should be switched
 								if (el.data(previousScroll) === self.getScrollerOffset()) {
 									if (el.data(pingPongDirection) === "right") {
@@ -1261,16 +1261,16 @@
 				el.data(getNextElementOffsetSize, false);
 			}
 
-			var getScrollerOffset = self.getScrollerOffset();
+			var currentScroll = self.getScrollerOffset();
 			
 			// Check to see if the swap should be done
-			if (el.data(swapAt) <= getScrollerOffset) {
+			if (el.data(swapAt) <= currentScroll) {
 				el.data(swappedElement, el.data(scrollableArea).children(":first").detach());
 				el.data(scrollableArea).append(el.data(swappedElement));				
 				if (o.scrollOrientation === vertical){
-					el.data(scrollWrapper).scrollTop(getScrollerOffset - el.data(swappedElement).outerHeight(true));
+					el.data(scrollWrapper).scrollTop(currentScroll - el.data(swappedElement).outerHeight(true));
 				} else {
-					el.data(scrollWrapper).scrollLeft(getScrollerOffset - el.data(swappedElement).outerWidth(true));
+					el.data(scrollWrapper).scrollLeft(currentScroll - el.data(swappedElement).outerWidth(true));
 				}
 				el.data(getNextElementOffsetSize, true);
 			}
@@ -1306,16 +1306,16 @@
 				el.data(getNextElementOffsetSize, false);
 			}
 
-			var getScrollerOffset = self.getScrollerOffset();
+			var currentScroll = self.getScrollerOffset();
 			
 			// Check to see if the swap should be done
-			if (getScrollerOffset === 0) {
+			if (currentScroll === 0) {
 				el.data(swappedElement, el.data(scrollableArea).children(":last").detach());
 				el.data(scrollableArea).prepend(el.data(swappedElement));				
 				if (o.scrollOrientation === vertical){
-					el.data(scrollWrapper).scrollTop(getScrollerOffset + el.data(swappedElement).outerHeight(true));
+					el.data(scrollWrapper).scrollTop(currentScroll + el.data(swappedElement).outerHeight(true));
 				} else {
-					el.data(scrollWrapper).scrollLeft(getScrollerOffset + el.data(swappedElement).outerWidth(true));
+					el.data(scrollWrapper).scrollLeft(currentScroll + el.data(swappedElement).outerWidth(true));
 				}
 				el.data(getNextElementOffsetSize, true);
 			}
